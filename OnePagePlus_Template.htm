@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">	
+	<title>{{basics.name}}</title>
+	<style>
+	body {
+    background: #ffffff;
+    font: 13px "Times New Roman", Times, sans-serif;
+    line-height: 1.4;
+    margin: 40px 0;
+}
+
+em {
+    color: #999;
+}
+
+p {
+    line-height: 1.4;
+}
+
+ul {
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: 2px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 80px 100px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px #aaa;
+    -webkit-box-shadow: 2px 2px 4px #aaa;
+}
+
+.coursesList {
+    width: 28%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.largeFont {
+    font-size: 20px;
+}
+
+.smallFont {
+    font-size: 13px;
+}
+
+.basicsBlock {
+    font-size: 13px;
+	background-color: aqua;
+}
+
+.sectionBlock {
+    display: flex;
+    width: 100%;
+}
+
+.sectionName {
+    width: 18%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.sectionContent {
+    width: 80%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.sectionContent ul {
+    padding-left: 20px;
+    margin-top: 6px;
+    list-style-type: circle;
+}
+
+.sectionContent .title {
+    font-weight: bold;
+}
+
+.sectionContent .date {
+    float: right;
+}
+
+.sectionContent .separator {
+    height: 14px;
+}
+
+.sectionLine {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #CFCFCF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.divider {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.summary {
+    margin-top: 6px;
+}
+
+.skillBlock {
+    margin-bottom: 4px;
+}
+
+.jobBlock {
+    page-break-inside: avoid;
+}
+
+.description {
+    text-align: justify;
+}
+
+blockquote.reference {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+	</style>
+	
+	</head>
+	<body>
+	
+	<div id="resume">
+		<div id="nameBlock" class="largeFont">
+			<span class="name">
+				{{ basics.name }}
+			</span>
+		</div>
+		<div id="basicsBlock" class="basicsBlock">
+			<div class="contactBlock">
+				<span class="email">{{ basics.email }}</span>
+				<span class="divider">|</span>
+				<span class="phone">{{basics.phone}}</span>
+				<span class="divider">|</span>
+				<span class="address">
+					{{basics.location.address}}, {{basics.location.postalCode}} - {{basics.location.city}}
+				</span>
+			</div>
+			<div id="profilesBlock">
+				<span class="url">
+					{{#basics.profiles}}
+					<b>{{network}}</b> <a href="{{url}}">{{url}}</a>
+					<span class="divider">|</span>
+					{{/basics.profiles}}
+				</span>
+			</div>
+		</div>
+		
+		<div class="sectionLine"></div>
+		<div id="summaryBlock" class="sectionBlock">
+			<div class="sectionName">
+				<span>SUMMARY</span>
+			</div>
+			<div class="sectionContent">
+				<span>{{basics.summary}}</span>
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="education" class="sectionBlock">
+			<div class="sectionName">
+				<span>EDUCATION</span>
+			</div>
+			<div class="sectionContent">
+				{{#education}}
+				<div class="educationBlock">
+					<span class="title">
+						{{institution}}
+					</span>
+					<span class="date">
+						{{startDate}} — {{endDate}}
+					</span>
+					<div class="">
+						{{studyType}}  - {{area}}
+					</div>
+				</div>
+				<div class="separator"></div>
+				{{/education}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="skills" class="sectionBlock">
+			<div class="sectionName">
+				<span>SKILLS</span>
+			</div>
+			<div class="sectionContent">
+				{{#skills}}
+				<div class="skillBlock">
+					<span class="title">{{name}} <em>({{level}})</em>:</span>
+					{{#keywords}}
+					<span>{{.}}</span>,
+					{{/keywords}}
+				</div>
+				{{/skills}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="workBlock" class="sectionBlock">
+			<div class="sectionName">
+				<span>EXPERIENCE</span>
+			</div>
+			<div class="sectionContent">
+				{{#work}}
+				<div class="jobBlock">
+					<div class="blockHeader">
+						<span class="title">{{name}}</span>
+						 | <span class="position">{{position}}</span>
+						<span class="date">
+							{{startDate}} — {{endDate}}
+						</span>
+					</div>
+					<div><a href=""></a></div>
+					<div class="summary">
+						<p>{{summary}}</p>
+					</div>
+					<ul class="highlights">
+						{{#highlights}}
+						<li>{{.}}</li>
+						<li>Diagrams / Canvas</li>
+						{{/highlights}}
+					</ul>
+					<div class="separator"></div>
+				</div>
+				{{/work}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="certificates">
+			<div class="sectionName">
+				<span>CERTIFICATES</span>
+			</div>
+			<div class="sectionContent">
+				{{#certificates}}
+				<div class="blockHeader">
+					<span class="title">
+						{{name}}
+					</span>
+					 | <span class="issuer">{{issuer}}</span>
+					<span class="date">
+						<span class="date">{{date}}</span>
+					</span>
+				</div>
+				<div class="url">
+					<a href="{{url}}">{{url}}</a>
+				</div>
+				{{/certificates}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="languages" class="sectionBlock">
+			<div class="sectionName">
+				<span>LANGUAGES</span>
+			</div>
+			<div class="sectionContent">
+				{{#languages}}
+				<span class="language">{{language}}</span>
+				<span class="fluency"><em>{{fluency}}</em></span>
+				<br>
+				{{/languages}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+</div></body></html>
