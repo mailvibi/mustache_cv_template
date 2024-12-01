@@ -5,5 +5,6 @@ The most of the templates are copied (and modified to use mustache format) from 
 
 
 | Mustache Template (Modified) | Original Template Location |
+|------------------------------|----------------------------|
 |template/OnePagePlus_Template.htm | https://registry.jsonresume.org/thomasdavis?theme=onepage-plus|
 
