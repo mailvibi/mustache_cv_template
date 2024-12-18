@@ -7,8 +7,8 @@
 	body {
     background: #ffffff;
     font: 13px "Times New Roman", Times, sans-serif;
-    line-height: 1.4;
-    margin: 40px 0;
+    line-height: 1;
+    margin: 1px 0;
 }
 
 em {
@@ -34,7 +34,7 @@ a {
 #resume {
     margin: 0 auto;
     max-width: 600px;
-    padding: 80px 100px;
+    padding: 15px 100px;
     background: #fff;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 4px #aaa;
@@ -47,8 +47,9 @@ a {
     display: inline-block;
 }
 
-.largeFont {
-    font-size: 20px;
+.nameBlock {
+    font-size: 25px;
+	font-weight: 100;
 }
 
 .smallFont {
@@ -57,7 +58,7 @@ a {
 
 .basicsBlock {
     font-size: 13px;
-	background-color: aqua;
+	background-color: lightgray;
 }
 
 .sectionBlock {
@@ -96,9 +97,9 @@ a {
 }
 
 .sectionLine {
-    border-style: dashed;
-    border-width: 1px;
-    border-color: #CFCFCF;
+    border-style:solid;
+    border-width: 2px;
+    border-color: #525764;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -136,7 +137,7 @@ blockquote.reference {
 	<body>
 	
 	<div id="resume">
-		<div id="nameBlock" class="largeFont">
+		<div id="nameBlock" class="nameBlock">
 			<span class="name">
 				{{ basics.name }}
 			</span>
@@ -160,7 +161,6 @@ blockquote.reference {
 				</span>
 			</div>
 		</div>
-		
 		<div class="sectionLine"></div>
 		<div id="summaryBlock" class="sectionBlock">
 			<div class="sectionName">
@@ -168,6 +168,51 @@ blockquote.reference {
 			</div>
 			<div class="sectionContent">
 				<span>{{basics.summary}}</span>
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="skills" class="sectionBlock">
+			<div class="sectionName">
+				<span>SKILLS</span>
+			</div>
+			<div class="sectionContent">
+				{{#skills}}
+				<div class="skillBlock">
+					<span class="title">{{name}}:</span>
+					{{#keywords}}
+					<span>{{.}}</span>,
+					{{/keywords}}
+				</div>
+				{{/skills}}
+			</div>
+		</div>
+		<div class="sectionLine"></div>
+		<div id="workBlock" class="sectionBlock">
+			<div class="sectionName">
+				<span>EXPERIENCE</span>
+			</div>
+			<div class="sectionContent">
+				{{#work}}
+				<div class="jobBlock">
+					<div class="blockHeader">
+						<span class="title"> <a href="{{url}}">{{name}}</a> </span>
+						 | <span class="position">{{position}}</span>
+						<span class="date">
+							{{startDate}} - {{endDate}}
+						</span>
+					</div>
+					<div><a href=""></a></div>
+					<div class="summary">
+						<p>{{summary}}</p>
+					</div>
+					<ul class="highlights">
+						{{#highlights}}
+						<li>{{.}}</li>
+						{{/highlights}}
+					</ul>
+					<div class="separator"></div>
+				</div>
+				{{/work}}
 			</div>
 		</div>
 		<div class="sectionLine"></div>
@@ -190,74 +235,6 @@ blockquote.reference {
 				</div>
 				<div class="separator"></div>
 				{{/education}}
-			</div>
-		</div>
-		<div class="sectionLine"></div>
-		<div id="skills" class="sectionBlock">
-			<div class="sectionName">
-				<span>SKILLS</span>
-			</div>
-			<div class="sectionContent">
-				{{#skills}}
-				<div class="skillBlock">
-					<span class="title">{{name}} <em>({{level}})</em>:</span>
-					{{#keywords}}
-					<span>{{.}}</span>,
-					{{/keywords}}
-				</div>
-				{{/skills}}
-			</div>
-		</div>
-		<div class="sectionLine"></div>
-		<div id="workBlock" class="sectionBlock">
-			<div class="sectionName">
-				<span>EXPERIENCE</span>
-			</div>
-			<div class="sectionContent">
-				{{#work}}
-				<div class="jobBlock">
-					<div class="blockHeader">
-						<span class="title">{{name}}</span>
-						 | <span class="position">{{position}}</span>
-						<span class="date">
-							{{startDate}} — {{endDate}}
-						</span>
-					</div>
-					<div><a href=""></a></div>
-					<div class="summary">
-						<p>{{summary}}</p>
-					</div>
-					<ul class="highlights">
-						{{#highlights}}
-						<li>{{.}}</li>
-						<li>Diagrams / Canvas</li>
-						{{/highlights}}
-					</ul>
-					<div class="separator"></div>
-				</div>
-				{{/work}}
-			</div>
-		</div>
-		<div class="sectionLine"></div>
-		<div id="certificates">
-			<div class="sectionName">
-				<span>CERTIFICATES</span>
-			</div>
-			<div class="sectionContent">
-				{{#certificates}}
-				<div class="blockHeader">
-					<span class="title">
-						{{name}}
-					</span>
-					 | <span class="issuer">{{issuer}}</span>
-					<span class="date">
-						<span class="date">{{date}}</span>
-					</span>
-				</div>
-				<div class="url">
-					<a href="{{url}}">{{url}}</a>
-				</div>
-				{{/certificates}}
 			</div>
 		</div>
 		<div class="sectionLine"></div>
