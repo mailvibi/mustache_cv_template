@@ -34,11 +34,8 @@ a {
 #resume {
     margin: 0 auto;
     max-width: 600px;
-    padding: 15px 100px;
+    padding: 15px 50px;
     background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px #aaa;
-    -webkit-box-shadow: 2px 2px 4px #aaa;
 }
 
 .coursesList {
@@ -50,6 +47,8 @@ a {
 .nameBlock {
     font-size: 25px;
 	font-weight: 100;
+	background-color: rgb(196, 213, 216);
+	margin-bottom: 5px;
 }
 
 .smallFont {
@@ -58,7 +57,8 @@ a {
 
 .basicsBlock {
     font-size: 13px;
-	background-color: lightgray;
+	background-color: rgb(196, 213, 216);
+	block-size: 80px;
 }
 
 .sectionBlock {
@@ -104,8 +104,16 @@ a {
     margin-bottom: 10px;
 }
 
+.basicsSectionLine {
+    border-style:solid;
+    border-width: 2px;
+    border-color: #525764;
+    margin-bottom: 10px;
+}
+
 .divider {
-    font-weight: bold;
+    font-weight: bolder;
+	width: 2px;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -137,19 +145,15 @@ blockquote.reference {
 	<body>
 	
 	<div id="resume">
-		<div id="nameBlock" class="nameBlock">
-			<span class="name">
-				{{ basics.name }}
-			</span>
-		</div>
 		<div id="basicsBlock" class="basicsBlock">
+			<div id="nameBlock" class="nameBlock">
+				{{ basics.name }}
+			</div>
 			<div class="contactBlock">
-				<span class="email">{{ basics.email }}</span>
-				<span class="divider">|</span>
-				<span class="phone">{{basics.phone}}</span>
-				<span class="divider">|</span>
+				<span class="email">Email : {{ basics.email }}</span><br>
+				<span class="phone">Phone : {{basics.phone}}</span><br>
 				<span class="address">
-					{{basics.location.address}}, {{basics.location.postalCode}} - {{basics.location.city}}
+					Address : {{basics.location.address}}, {{basics.location.postalCode}} - {{basics.location.city}}
 				</span>
 			</div>
 			<div id="profilesBlock">
@@ -161,7 +165,7 @@ blockquote.reference {
 				</span>
 			</div>
 		</div>
-		<div class="sectionLine"></div>
+		<div class="basicsSectionLine"></div>
 		<div id="summaryBlock" class="sectionBlock">
 			<div class="sectionName">
 				<span>SUMMARY</span>
@@ -180,7 +184,7 @@ blockquote.reference {
 				<div class="skillBlock">
 					<span class="title">{{name}}:</span>
 					{{#keywords}}
-					<span>{{.}}</span>,
+					<span>{{.}}</span>
 					{{/keywords}}
 				</div>
 				{{/skills}}
